@@ -6,12 +6,9 @@ import jenkins.model.*
     }
    
    stage('checkout'){
-    steps{
-        script{
-            checkout
-        }
-    }
+            checkout()
 }
+
    stage ('Compile Stage') {
       withMaven(maven : 'maven_3_5_0') {
      bat 'mvn clean'
