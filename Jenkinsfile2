@@ -3,9 +3,15 @@ import jenkins.model.*
 
     stage("Pipeline Setup - clone the required git repo") {
       getCurrentHerokuReleaseDate("11","33")
-      checkout()
     }
-    
+   
+   stage('checkout'){
+    steps{
+        script{
+            checkout
+        }
+    }
+}
    stage ('Compile Stage') {
       withMaven(maven : 'maven_3_5_0') {
      bat 'mvn clean'
