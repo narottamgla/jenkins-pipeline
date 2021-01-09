@@ -3,6 +3,7 @@ import jenkins.model.*
 
     stage("Pipeline Setup - clone the required git repo") {
       getCurrentHerokuReleaseDate("11","33")
+      checkout()
     }
     
    stage ('Compile Stage') {
@@ -17,3 +18,11 @@ import jenkins.model.*
     
     }
     
+    checkout([
+        $class: 'GitSCM', 
+        branches: [[name: '*/master']], 
+        doGenerateSubmoduleConfigurations: false, 
+        extensions: [[$class: 'CleanCheckout']], 
+        submoduleCfg: [], 
+        userRemoteConfigs: [[credentialsId: '<gitCredentials>', url: 'https://github.com/narottamgla/selenium-bdd-cucumber.git']]
+    ])
