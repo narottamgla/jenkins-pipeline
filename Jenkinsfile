@@ -60,10 +60,11 @@ pipeline {
 def getCurrentHerokuReleaseDate() {
    // withCredentials([[$class: 'StringBinding', credentialsId: 'HEROKU_API_KEY', variable: 'HEROKU_API_KEY']]) {
       //  def apiUrl = "https://api.heroku.com/apps/${app}/releases/${version}"
-        def response = "curl --location --request GET 'https://api.heroku.com/apps' \
+        def response = sh(returnStdout: true, script: "curl --location --request GET 'https://api.heroku.com/apps' \
 --header 'Accept: application/vnd.heroku+json; version=3' \
 --header 'Authorization: Basic bmFyb3R0YW1nbGFAZ21haWwuY29tOlNpbmdoMTk5MyM='"
         def jsonSlurper = new JsonSlurper()
+        response = \"{\r\n        \"acm\": false,\r\n        \"archived_at\": null,\r\n        \"buildpack_provided_description\": null,\r\n        \"created_at\": \"2020-01-23T16:51:26Z\",\"updated_at\": \"2020-05-09T05:28:01Z\",\"web_url\": \"https:\/\/hidden-cove-78284.herokuapp.com\/\"\r\n    }\"                  
         def data = jsonSlurper.parseText("${response}")
         return data.created_at
    // }
