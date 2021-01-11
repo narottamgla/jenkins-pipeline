@@ -59,7 +59,9 @@ pipeline {
 def getCurrentHerokuReleaseDate(app, version) {
     withCredentials([[$class: 'StringBinding', credentialsId: 'HEROKU_API_KEY', variable: 'HEROKU_API_KEY']]) {
         def apiUrl = "https://api.heroku.com/apps/${app}/releases/${version}"
-        def response = sh(returnStdout: true, script: "curl -s  -H \"Authorization: Bearer ${env.HEROKU_API_KEY}\" -H \"Accept: application/vnd.heroku+json; version=3\" -X GET ${apiUrl}").trim()
+        def response = sh(returnStdout: true, script: "curl --location --request GET 'https://api.heroku.com/apps' \
+--header 'Accept: application/vnd.heroku+json; version=3' \
+--header 'Authorization: Basic bmFyb3R0YW1nbGFAZ21haWwuY29tOlNpbmdoMTk5MyM='").trim()
         def jsonSlurper = new JsonSlurper()
         def data = jsonSlurper.parseText("${response}")
         return data.created_at
