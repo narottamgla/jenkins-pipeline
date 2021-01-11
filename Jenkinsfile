@@ -19,7 +19,7 @@ pipeline {
 
             steps {
                 withMaven(maven : 'maven_3_5_0') {
-                  #  bat 'mvn verify -Dcontext=firefox -Dwebdriver.driver=firefox'
+                  //  bat 'mvn verify -Dcontext=firefox -Dwebdriver.driver=firefox'
                    echo 'Firefox...'
 
                 }
@@ -30,7 +30,7 @@ pipeline {
 
             steps {
                 withMaven(maven : 'maven_3_5_0') {
-                   # bat 'mvn verify -Dcontext=chrome -Dwebdriver.driver=chrome'
+                  // bat 'mvn verify -Dcontext=chrome -Dwebdriver.driver=chrome'
                  echo 'Chome...'
 
                 }
@@ -48,7 +48,7 @@ pipeline {
         
         stage ('Publish Reports') {
             steps {
-               publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: '\\target\\site\\serenity', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+              // publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: '\\target\\site\\serenity', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
             }
         }
     }
