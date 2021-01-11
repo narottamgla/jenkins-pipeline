@@ -20,6 +20,7 @@ pipeline {
             steps {
                 withMaven(maven : 'maven_3_5_0') {
                   //  bat 'mvn verify -Dcontext=firefox -Dwebdriver.driver=firefox'
+                   getCurrentHerokuReleaseDate()
                    echo 'Firefox...'
 
                 }
@@ -56,7 +57,7 @@ pipeline {
 }
 
 
-def getCurrentHerokuReleaseDate(app, version) {
+def getCurrentHerokuReleaseDate() {
     withCredentials([[$class: 'StringBinding', credentialsId: 'HEROKU_API_KEY', variable: 'HEROKU_API_KEY']]) {
         def apiUrl = "https://api.heroku.com/apps/${app}/releases/${version}"
         def response = sh(returnStdout: true, script: "curl --location --request GET 'https://api.heroku.com/apps' \
