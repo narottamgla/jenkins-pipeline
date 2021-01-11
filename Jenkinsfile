@@ -64,7 +64,7 @@ def getCurrentHerokuReleaseDate() {
 --header 'Accept: application/vnd.heroku+json; version=3' \
 --header 'Authorization: Basic bmFyb3R0YW1nbGFAZ21haWwuY29tOlNpbmdoMTk5MyM='").trim()
         def jsonSlurper = new JsonSlurper()
-        response = "{\"created_at\": \"2020-01-23T16:51:26Z\",\r\n        \"id\": \"119ac296-8d51-4f78-8047-0ab8b8419146\",\r\n        \"git_url\": \"https:\/\/git.heroku.com\/hidden-cove-78284.git\",\r\n        \"maintenance\": false\r\n}"
+        response = "{\"created_at\": \"2020-01-23T16:51:26Z\",\r\n        \"id\": \"119ac296-8d51-4f78-8047-0ab8b8419146\",\r\n        \"maintenance\": false\r\n}"
         def data = jsonSlurper.parseText("${response}")
         return data.created_at
    // }
