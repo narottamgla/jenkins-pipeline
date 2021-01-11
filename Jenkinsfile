@@ -49,6 +49,7 @@ pipeline {
         stage ('Publish Reports') {
             steps {
               // publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: '\\target\\site\\serenity', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+           echo "Report"
             }
         }
     }
