@@ -55,3 +55,4 @@ def getCurrentHerokuReleaseDate(app, version) {
         def data = jsonSlurper.parseText("${response}")
         return data.created_at
     }
+}
