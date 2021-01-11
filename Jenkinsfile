@@ -3,6 +3,13 @@ pipeline {
 
     stages {
         stage ('Compile Stage') {
+            
+          steps {
+            git branch: 'master',
+                credentialsId: 'Github_Cred',
+                url: 'https://github.com/narottamgla/selenium-bdd-cucumber.git'
+        }
+
 
             steps {
                 withMaven(maven : 'maven_3_5_0') {
