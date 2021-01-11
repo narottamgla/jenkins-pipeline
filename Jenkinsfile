@@ -19,7 +19,9 @@ pipeline {
 
             steps {
                 withMaven(maven : 'maven_3_5_0') {
-                    bat 'mvn verify -Dcontext=firefox -Dwebdriver.driver=firefox'
+                  #  bat 'mvn verify -Dcontext=firefox -Dwebdriver.driver=firefox'
+                   echo 'Firefox...'
+
                 }
             }
         }
@@ -28,7 +30,9 @@ pipeline {
 
             steps {
                 withMaven(maven : 'maven_3_5_0') {
-                    bat 'mvn verify -Dcontext=chrome -Dwebdriver.driver=chrome'
+                   # bat 'mvn verify -Dcontext=chrome -Dwebdriver.driver=chrome'
+                 echo 'Chome...'
+
                 }
             }
         }
